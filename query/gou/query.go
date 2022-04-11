@@ -3,6 +3,7 @@ package gou
 import (
 	"bytes"
 	"fmt"
+	"github.com/davecgh/go-spew/spew"
 	"io"
 	"math"
 	"os"
@@ -129,10 +130,12 @@ func (gou Query) GetBindings() []interface{} {
 // Load 加载查询条件
 func (gou *Query) Load(data interface{}) (share.DSL, error) {
 
+	spew.Printf("query.Load: [data:%#v]\n", data)
 	input, err := jsoniter.Marshal(data)
 	if err != nil {
 		return nil, errors.Errorf("加载失败 %s", err.Error())
 	}
+
 
 	query := Make(input)
 	query.Query = gou.Query.New()

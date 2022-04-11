@@ -4,6 +4,7 @@ go 1.13
 
 require (
 	github.com/buraksezer/olric v0.4.2
+	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/gin-gonic/gin v1.7.7
 	github.com/go-errors/errors v1.4.2
 	github.com/go-playground/validator/v10 v10.10.0 // indirect
@@ -25,4 +26,4 @@ replace github.com/yaoapp/kun => ../kun
 
 replace github.com/yaoapp/xun => ../xun
 
-replace rogchap.com/v8go  => ../v8go
+replace rogchap.com/v8go => ../v8go

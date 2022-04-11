@@ -2,6 +2,8 @@ package gou
 
 import (
 	"fmt"
+	"github.com/davecgh/go-spew/spew"
+	"runtime/debug"
 	"strings"
 
 	"github.com/yaoapp/kun/exception"
@@ -10,11 +12,14 @@ import (
 
 func (gou Query) sqlGroup(group Group, selects map[string]FieldNode) (string, []string, map[int]Expression) {
 
+	debug.PrintStack()
+	spew.Printf("info sqlGroup: [group:%#v] [selects:%#v] \n", group, selects)
 	var node *FieldNode = nil          // 关联 Select 字段节点
 	var field *Expression = nil        // 关联 Select 字段信息
 	fieldGroup := group.Field          // GroupBy 字段表达式
 	nameGroup := fieldGroup.ToString() // GroupBy 字段名称
 	id := gou.ID(*fieldGroup)
+	fmt.Printf("nameGroup: %#v\n", nameGroup)
 
 	// 是否为别名
 	if n, has := selects[nameGroup]; has {
